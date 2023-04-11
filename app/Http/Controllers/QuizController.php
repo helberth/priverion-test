@@ -61,9 +61,17 @@ class QuizController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Quiz $quiz)
+    public function update(Request $request, Quiz $quiz): RedirectResponse
     {
-        //
+        $this->authorize('update', $quiz);
+ 
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+ 
+        $quiz->update($validated);
+ 
+        return redirect(route('quiz.index'));
     }
 
     /**
