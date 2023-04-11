@@ -1,4 +1,8 @@
 import React from "react";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 export default function Quiz({ quiz }) {
     return (
@@ -22,7 +26,7 @@ export default function Quiz({ quiz }) {
                     <div>
                         <span className="text-gray-800">{quiz.user.name}</span>
                         <small className="ml-2 text-sm text-gray-600">
-                            {new Date(quiz.created_at).toLocaleString()}
+                            {dayjs(quiz.created_at).fromNow()}
                         </small>
                     </div>
                 </div>
