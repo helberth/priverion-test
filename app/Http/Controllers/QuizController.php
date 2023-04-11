@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class QuizController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Response
     {
-        //
+        return Inertia::render('Quizzes/Index', [
+            'quizzes' => Quiz::with('user:id,name')->latest()->get(),
+        ]);
     }
 
     /**
@@ -26,9 +31,15 @@ class QuizController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+ 
+        $request->user()->quizzes()->create($validated);
+ 
+        return redirect(route('quiz.index'));
     }
 
     /**
