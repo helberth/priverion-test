@@ -60,3 +60,8 @@ To start with, we are going to enable two routes:
 
 -   The `index` route will display our form and a listing of Quizzes.
 -   The `store` route will be used for saving new Quizzes.
+
+### Step 5: Modify Controllers for edition
+
+-   QuizController
+-   QuestionController
