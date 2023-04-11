@@ -77,8 +77,12 @@ class QuizController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Quiz $quiz)
+    public function destroy(Quiz $quiz): RedirectResponse
     {
-        //
+        $this->authorize('delete', $quiz);
+ 
+        $quiz->delete();
+ 
+        return redirect(route('quiz.index'));
     }
 }

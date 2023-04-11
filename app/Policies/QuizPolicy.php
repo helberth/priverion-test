@@ -45,7 +45,7 @@ class QuizPolicy
      */
     public function delete(User $user, Quiz $quiz): bool
     {
-        //
+        return $this->update($user, $quiz);
     }
 
     /**

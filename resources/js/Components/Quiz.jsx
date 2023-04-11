@@ -74,6 +74,13 @@ export default function Quiz({ quiz }) {
                                 >
                                     Edit
                                 </button>
+                                <Dropdown.Link
+                                    as="button"
+                                    href={route("quiz.destroy", quiz.id)}
+                                    method="delete"
+                                >
+                                    Delete
+                                </Dropdown.Link>
                             </Dropdown.Content>
                         </Dropdown>
                     )}
