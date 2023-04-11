@@ -1,47 +1,37 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import Quiz from "@/Components/Quiz";
+import Question from "@/Components/Question";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, Head } from "@inertiajs/react";
 
-export default function Index({ auth, quizzes }) {
+export default function Index({ auth }) {
     const { data, setData, post, processing, reset, errors } = useForm({
         message: "",
     });
 
     const submit = (e) => {
         e.preventDefault();
-        post(route("quiz.store"), { onSuccess: () => reset() });
+        post(route("question.store"), { onSuccess: () => reset() });
     };
 
     return (
         <AuthenticatedLayout user={auth.user}>
-            <Head title="Quizzes" />
+            <Head title="Questions" />
 
             <div className="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
                 <form onSubmit={submit}>
                     <textarea
                         value={data.message}
-                        placeholder="Quiz title"
+                        placeholder="Question title"
                         className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                         onChange={(e) => setData("message", e.target.value)}
                     ></textarea>
                     <InputError message={errors.message} className="mt-2" />
                     <PrimaryButton className="mt-4" disabled={processing}>
-                        Create Quiz
+                        Question
                     </PrimaryButton>
                 </form>
-
-                <div className="mt-6 divide-y">
-                    <p>Quizzes List</p>
-                </div>
-
-                <div className="mt-6 bg-white shadow-sm rounded-lg divide-y">
-                    {quizzes.map((quiz) => (
-                        <Quiz key={quiz.id} quiz={quiz} />
-                    ))}
-                </div>
             </div>
         </AuthenticatedLayout>
     );

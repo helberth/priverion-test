@@ -4,7 +4,7 @@ import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { useForm, usePage } from "@inertiajs/react";
+import { useForm, usePage, Link } from "@inertiajs/react";
 
 dayjs.extend(relativeTime);
 
@@ -74,6 +74,13 @@ export default function Quiz({ quiz }) {
                                 >
                                     Edit
                                 </button>
+                                {/* <Link
+                                    tabIndex="1"
+                                    className="px-4 py-2 text-sm text-white bg-blue-500 rounded"
+                                    href={route("quiz.edit", quiz.id)}
+                                >
+                                    Edit Quiz
+                                </Link> */}
                                 <Dropdown.Link
                                     as="button"
                                     href={route("quiz.destroy", quiz.id)}

@@ -55,7 +55,9 @@ class QuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
-        //
+        return Inertia::render('Quizzes/Edit', [
+            'quiz' => $quiz
+        ]);
     }
 
     /**
