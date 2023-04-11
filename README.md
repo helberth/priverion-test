@@ -53,3 +53,10 @@ $ php artisan make:model -mrc Quiz
 $ php artisan make:model -mrc Question
 $ php artisan migrate:fresh
 ```
+
+### Step 4: Add Routes
+
+To start with, we are going to enable two routes:
+
+-   The `index` route will display our form and a listing of Quizzes.
+-   The `store` route will be used for saving new Quizzes.
