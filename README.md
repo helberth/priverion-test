@@ -36,3 +36,20 @@ $ composer require laravel/breeze --dev
 $ php artisan breeze:install react
 $ npm run dev
 ```
+
+### Step 3: Create Initial Migration and Models
+
+Open another terminal in your `priverion-test` project directory and run the initial database migrations to populate the database with the default tables from Laravel and Breeze:
+
+```sh
+$ php artisan migrate
+```
+
+Let's create the following models: Quiz, Question
+Additionally, we can create a migration and resource controllers for these models:
+
+```sh
+$ php artisan make:model -mrc Quiz
+$ php artisan make:model -mrc Question
+$ php artisan migrate:fresh
+```
